@@ -1,3 +1,75 @@
+CREATE DATABASE tiket
+USE tiket
+
+CREATE TABLE employees  (
+  EmployeeId int(11) NOT NULL AUTO_INCREMENT,
+  FirstName varchar(50) NULL,
+  LastName varchar(50) NULL,
+  Title varchar(30) NULL,
+  WorkPhone varchar(30) NULL,
+  PRIMARY KEY (EmployeeId)
+);
+
+CREATE TABLE customers  (
+  CustomerId int(11) NOT NULL AUTO_INCREMENT,
+  CompanyName varchar(50) NULL,
+  FirstName varchar(30) NULL,
+  LastName varchar(50) NULL,
+  BillingAddress varchar(255) NULL,
+  City varchar(50) NULL,
+  StateOrProvince varchar(20) NULL,
+  ZipCode varchar(20) NULL,
+  Email varchar(75) NULL,
+  CompanyWebsite varchar(200) NULL,
+  PhoneNumber varchar(30) NULL,
+  FaxNumber varchar(30) NULL,
+  ShipAddress varchar(255) NULL,
+  ShipCity varchar(50) NULL,
+  ShipStateOrProvince varchar(50) NULL,
+  ShipZIPCode varchar(29) NULL,
+  ShipPhoneNumber varchar(30) NULL,
+  PRIMARY KEY (CustomerId)
+);
+
+CREATE TABLE shipping_methods  (
+  ShippingMethodId int(11) NULL AUTO_INCREMENT,
+  ShippingMethode varchar(20) NULL,
+  PRIMARY KEY (ShippingMethodId)
+);
+
+CREATE TABLE products  (
+  ProductId int(11) NOT NULL AUTO_INCREMENT,
+  ProductName varchar(50) NULL,
+  UnitPrice int(11) NULL,
+  InStock char(1) NULL,
+  PRIMARY KEY (ProductId)
+);
+
+CREATE TABLE order_details  (
+  OrderDetailId int(11) NOT NULL AUTO_INCREMENT,
+  OrderId int(11) NULL,
+  ProductId int(11) NULL,
+  Quantity int(11) NULL,
+  UnitPrice int(11) NULL,
+  Discount int(11) NULL,
+  PRIMARY KEY (OrderDetailId)
+);
+
+CREATE TABLE orders  (
+  OrderId int(11) NOT NULL AUTO_INCREMENT,
+  CustomerId int(11) NULL,
+  EmployeeId int(11) NULL,
+  OrderDate datetime(0) NULL,
+  PurchaseOrderNumber varchar(30) NULL,
+  ShipDate datetime(0) NULL,
+  ShippingMethodId int(11) NULL,
+  FreightCharge int(11) NULL,
+  Taxes int(11) NULL,
+  PaymentReceived char(1) NULL,
+  Comment varchar(150) NULL,
+  PRIMARY KEY (OrderId)
+);
+
 #Daftar pelanggan yang beralamat di kota Irvine
 select * from customers where city = 'irvine'
 
